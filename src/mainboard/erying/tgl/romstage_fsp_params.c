@@ -31,14 +31,6 @@ void mainboard_memory_init_params(FSPM_UPD *mupd)
 	mupd->FspmConfig.GtPsmiSupport = 0;
 	mupd->FspmConfig.IgdDvmt50PreAlloc = 2; // 64MB
 
-	// SoC PCI-Express configuration (4.0)
-	mupd->FspmConfig.CpuPcieRpPcieSpeed[0] = 0; // Auto
-	mupd->FspmConfig.CpuPcieRpPcieSpeed[1] = 0; // Auto
-	mupd->FspmConfig.CpuPcieRpCdrRelock[0] = 1;
-	mupd->FspmConfig.CpuPcieRpCdrRelock[1] = 1;
-	mupd->FspmConfig.CpuPcieNewFom[0] = 1;
-	mupd->FspmConfig.CpuPcieNewFom[1] = 1;
-
 	// DMI (SoC - PCH) Link settings
 	mupd->FspmConfig.DmiMaxLinkSpeed = 3;
 	mupd->FspmConfig.DmiAspm = 0;
