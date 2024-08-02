@@ -22,31 +22,29 @@ void mainboard_silicon_init_params(FSP_S_CONFIG *params)
 	params->CpuPcieRpAdvancedErrorReporting[0] = 1;
 	params->CpuPcieRpPeerToPeerMode[0] = 1;
 	params->CpuPcieRpAcsEnabled[0] = 1;
-	params->CpuPcieRpTransmitterHalfSwing[0] = 1;
+	params->CpuPcieRpLtrEnable[0] = 1;
+	params->CpuPcieRpPtmEnabled[0] = 1;
 
 	// PEG1 - PCI-E x16
 	params->CpuPcieRpSlotImplemented[1] = 1;
 	params->CpuPcieRpAdvancedErrorReporting[1] = 1;
 	params->CpuPcieRpPeerToPeerMode[1] = 1;
 	params->CpuPcieRpAcsEnabled[1] = 1;
-	params->CpuPcieRpTransmitterHalfSwing[1] = 1;
+        params->CpuPcieRpLtrEnable[1] = 1;
+        params->CpuPcieRpPtmEnabled[1] = 1;
 
 	// PCH RootPorts
 	params->PcieRpMaxPayload[4] = 2; // M.2 Gen3
 	params->PcieRpAcsEnabled[4] = 1;
-	params->PcieRpTransmitterHalfSwing[4] = 1;
 
 	params->PcieRpMaxPayload[8]  = 1; // M.2 NGFF
 	params->PcieRpAcsEnabled[8] = 1;
-	params->PcieRpTransmitterHalfSwing[8] = 1;
 
 	params->PcieRpMaxPayload[10]  = 1; // RTL8111 NIC
-	params->PcieRpLtrEnable[10] = 1;
-	params->PcieRpTransmitterHalfSwing[10] = 1;
+	params->PcieRpAcsEnabled[10] = 1;
 
 	params->PcieRpMaxPayload[11]  = 1; // PCI-E x1 Gen3
 	params->PcieRpAcsEnabled[11] = 1;
-	params->PcieRpTransmitterHalfSwing[11] = 1;
 
 	// Power management: Force-disable ASPM
 	params->CpuPciePowerGating = 0;
