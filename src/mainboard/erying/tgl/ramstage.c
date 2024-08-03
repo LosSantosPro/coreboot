@@ -19,7 +19,6 @@ void mainboard_silicon_init_params(FSP_S_CONFIG *params)
 
 	// PEG0 - Gen4 NVME
 	params->CpuPcieRpSlotImplemented[0] = 1;
-	params->CpuPcieRpAdvancedErrorReporting[0] = 1;
 	params->CpuPcieRpPeerToPeerMode[0] = 1;
 	params->CpuPcieRpAcsEnabled[0] = 1;
 	params->CpuPcieRpLtrEnable[0] = 1;
@@ -27,7 +26,6 @@ void mainboard_silicon_init_params(FSP_S_CONFIG *params)
 
 	// PEG1 - PCI-E x16
 	params->CpuPcieRpSlotImplemented[1] = 1;
-	params->CpuPcieRpAdvancedErrorReporting[1] = 1;
 	params->CpuPcieRpPeerToPeerMode[1] = 1;
 	params->CpuPcieRpAcsEnabled[1] = 1;
         params->CpuPcieRpLtrEnable[1] = 1;
