@@ -34,17 +34,10 @@ void mainboard_silicon_init_params(FSP_S_CONFIG *params)
         params->CpuPcieRpPtmEnabled[1] = 1;
 
 	// PCH RootPorts
-	params->PcieRpMaxPayload[4] = 2; // M.2 Gen3
-	params->PcieRpAcsEnabled[4] = 1;
-
-	params->PcieRpMaxPayload[8]  = 1; // M.2 NGFF
-	params->PcieRpAcsEnabled[8] = 1;
-
-	params->PcieRpMaxPayload[10]  = 1; // RTL8111 NIC
-	params->PcieRpAcsEnabled[10] = 1;
-
-	params->PcieRpMaxPayload[11]  = 1; // PCI-E x1 Gen3
-	params->PcieRpAcsEnabled[11] = 1;
+	params->PcieRpAcsEnabled[4] = 1;  // M.2 Gen3
+	params->PcieRpAcsEnabled[8] = 1;  // M.2 NGFF
+	params->PcieRpAcsEnabled[10] = 1; // RTL8111 NIC
+	params->PcieRpAcsEnabled[11] = 1; // PCI-E x1 Gen3
 
 	// Power management: Force-disable ASPM
 	params->CpuPciePowerGating = 0;
