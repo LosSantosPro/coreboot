@@ -68,25 +68,25 @@ chip soc/intel/tigerlake
 
 		device ref south_xhci on
 			register "usb2_ports" = "{
-				[0] = USB2_PORT_MID(OC0),		/* Rear, bottom right */
-				[1] = USB2_PORT_MID(OC0),		/* Rear, bottom left */
-				[2] = USB2_PORT_MID(OC2),		/* NIC left */
-				[3] = USB2_PORT_MID(OC2),		/* NIC right */
-				[4] = USB2_PORT_MID(OC2),		/* Front Panel 1 */
-				[5] = USB2_PORT_MID(OC2),		/* Front Panel 2 */
-				[8] = USB2_PORT_MID(OC0),		/* Front Panel 1 (USB3) */
-				[9] = USB2_PORT_MID(OC0),		/* Front Panel 2 (USB3) */
-				[10] = USB2_PORT_MID(OC0),		/* Rear, top left */
-				[11] = USB2_PORT_MID(OC0),		/* Rear, top right */
+				[0] = USB2_PORT_MID(OC_SKIP),		/* Rear, bottom right */
+				[1] = USB2_PORT_MID(OC_SKIP),		/* Rear, bottom left */
+				[2] = USB2_PORT_MID(OC_SKIP),		/* NIC left */
+				[3] = USB2_PORT_MID(OC_SKIP),		/* NIC right */
+				[4] = USB2_PORT_MID(OC_SKIP),		/* Front Panel 1 */
+				[5] = USB2_PORT_MID(OC_SKIP),		/* Front Panel 2 */
+				[8] = USB2_PORT_MID(OC_SKIP),		/* Front Panel 1 (USB3) */
+				[9] = USB2_PORT_MID(OC_SKIP),		/* Front Panel 2 (USB3) */
+				[10] = USB2_PORT_MID(OC_SKIP),		/* Rear, top left */
+				[11] = USB2_PORT_MID(OC_SKIP),		/* Rear, top right */
 			}"
 
 			register "usb3_ports" = "{
-				[0] = USB3_PORT_DEFAULT(OC0),		/* Rear, bottom right */
-				[1] = USB3_PORT_DEFAULT(OC0),		/* Rear, bottom left */
-				[2] = USB3_PORT_DEFAULT(OC0),		/* Front Panel 1 */
-				[3] = USB3_PORT_DEFAULT(OC0),		/* Front Panel 2 */
-				[4] = USB3_PORT_DEFAULT(OC0),		/* Rear, top left */
-				[5] = USB3_PORT_DEFAULT(OC0),		/* Rear, top right */
+				[0] = USB3_PORT_DEFAULT(OC_SKIP),	/* Rear, bottom right */
+				[1] = USB3_PORT_DEFAULT(OC_SKIP),	/* Rear, bottom left */
+				[2] = USB3_PORT_DEFAULT(OC_SKIP),	/* Front Panel 1 */
+				[3] = USB3_PORT_DEFAULT(OC_SKIP),	/* Front Panel 2 */
+				[4] = USB3_PORT_DEFAULT(OC_SKIP),	/* Rear, top left */
+				[5] = USB3_PORT_DEFAULT(OC_SKIP),	/* Rear, top right */
 			}"
 		end
 
