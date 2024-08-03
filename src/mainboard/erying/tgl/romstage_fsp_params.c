@@ -37,12 +37,13 @@ void mainboard_memory_init_params(FSPM_UPD *mupd)
 	mupd->FspmConfig.DmiAspmCtrl = 0;
 
 	// Memory settings/training - based on stock
-	mupd->FspmConfig.SpdProfileSelected = 0; // Default Profile
-	mupd->FspmConfig.RefClk = 1; // 100MHz
-	mupd->FspmConfig.VddVoltage = 1350; // 1.35V (Applicable only with XMP Profile 1)
+	mupd->FspmConfig.SpdProfileSelected = 2; // XMP Profile 1
+	mupd->FspmConfig.RefClk = 0; // 133MHz
+	mupd->FspmConfig.VddVoltage = 1350; // 1.35V
+	mupd->FspmConfig.McPllVoltageOffset = 6; // Bump memory controller voltage by offset of 6
 	mupd->FspmConfig.Ratio = 0; // Auto
-	mupd->FspmConfig.RingDownBin = 0;
-	mupd->FspmConfig.GearRatio = 0; // Auto
+	mupd->FspmConfig.RingDownBin = 1;
+	mupd->FspmConfig.GearRatio = 1; // Gear 1
 	mupd->FspmConfig.ECT = 1;
 	mupd->FspmConfig.LCT = 1;
 	mupd->FspmConfig.SOT = 1;
@@ -71,9 +72,8 @@ void mainboard_memory_init_params(FSPM_UPD *mupd)
 	mupd->FspmConfig.SafeMode = 0;
 	mupd->FspmConfig.OverrideDowngradeForMixedMemory = 0;
 	mupd->FspmConfig.MemTestOnWarmBoot = 1;
-	mupd->FspmConfig.DdrFreqLimit = 2866; // D0 (ES) revision is unstable with higher frequency, D1 works with 3200.
+	mupd->FspmConfig.DdrFreqLimit = 3200; // Maximum speed according to Intel's official documentation. 
 	mupd->FspmConfig.SaGv = 0;
-	// mupd->FspmConfig.RetrainOnFastFail = 1; - Commenting out for now, can't find an equivalent in FSP-M headers.
 	mupd->FspmConfig.NModeSupport = 1; // Board type is 1N (1DPC).
 	mupd->FspmConfig.RhPrevention = 0;
 	mupd->FspmConfig.RefreshWm = 1;
