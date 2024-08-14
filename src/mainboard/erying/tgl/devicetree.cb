@@ -3,12 +3,12 @@ chip soc/intel/tigerlake
 	# Power limits/thermals - adjust according to your needs, but beware of VRM cooling!
 	# H_6_CORE means Core i5, H_8_CORE means Core i7 or i9. Stock PL1/PL2: 45/109W.
 	register "power_limits_config[POWER_LIMITS_H_6_CORE]" = "{
-		.tdp_pl1_override = 60,
+		.tdp_pl1_override = 45,
 		.tdp_pl2_override = 109,
 	}"
 
 	register "power_limits_config[POWER_LIMITS_H_8_CORE]" = "{
-		.tdp_pl1_override = 60,
+		.tdp_pl1_override = 45,
 		.tdp_pl2_override = 109,
 	}"
 	register "tcc_offset" = "8"
@@ -93,27 +93,29 @@ chip soc/intel/tigerlake
 		device ref shared_ram on end
 
 		device ref sata on
-			register "SataPortsEnable[0]" = "1"
-			register "SataPortsEnable[1]" = "1"
-			register "SataPortsEnable[2]" = "1"
-			register "SataPortsEnable[3]" = "1"
+			register "SataPortsEnable" = "{
+				[0] = 1,
+				[1] = 1,
+				[2] = 1,
+				[3] = 1,
+			}"
+			register "SataPortsDevSlp" = "{
+				[0] = 1,
+				[1] = 1,
+				[2] = 1,
+				[3] = 1,
+			}"
 			register "SataSalpSupport" = "1"
-			register "SataPortsDevSlp[0]" = "1"
-			register "SataPortsDevSlp[1]" = "1"
-			register "SataPortsDevSlp[2]" = "1"
-			register "SataPortsDevSlp[3]" = "1"
 		end
 
 		device ref pcie_rp5 on		# PCH M.2 (Gen3)
 			register "PcieRpSlotImplemented[4]" = "1"
-			register "PcieRpAdvancedErrorReporting[4]" = "1"
 			register "PcieClkSrcUsage[4]" = "4"
 			register "PcieClkSrcClkReq[4]" = "PCIE_CLK_NOTUSED"
 		end
 
 		device ref pcie_rp9 on		# PCH NGFF (WiFi)
 			register "PcieRpSlotImplemented[8]" = "1"
-			register "PcieRpAdvancedErrorReporting[8]" = "1"
 			register "PcieClkSrcUsage[5]" = "8"
 			register "PcieClkSrcClkReq[5]" = "PCIE_CLK_NOTUSED"
 
@@ -121,22 +123,13 @@ chip soc/intel/tigerlake
 
 		device ref pcie_rp11 on		# RTL8111 GbE
 			register "PcieClkSrcUsage[3]" = "10"
-			register "PcieClkSrcClkReq[3]" = "PCIE_CLK_NOTUSED"
+			register "PcieClkSrcClkReq[3]" = "2"
 		end
 
 		device ref pcie_rp12 on		# PCH x1 (Gen3)
 			register "PcieRpSlotImplemented[11]" = "1"
-			register "PcieRpAdvancedErrorReporting[11]" = "1"
 			register "PcieClkSrcUsage[1]" = "11"
 			register "PcieClkSrcClkReq[1]" = "PCIE_CLK_NOTUSED"
-		end
-
-		device ref uart0 on
-			register "SerialIoUartMode[PchSerialIoIndexUART0]" = "PchSerialIoPci"
-		end
-
-		device ref gspi1 on
-			register "SerialIoGSpiMode[PchSerialIoIndexGSPI1]" = "PchSerialIoPci"
 		end
 
 		device ref pch_espi on
@@ -183,8 +176,6 @@ chip soc/intel/tigerlake
 				device pnp 2e.6 off end
 
 				device pnp 2e.7 on	# GPIO
-					irq 0x29 = 0xc0
-					irq 0x2c = 0x41
 					irq 0x2d = 0x02
 					io 0x60  = 0xa10
 					io 0x62  = 0xa00

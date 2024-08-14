@@ -21,15 +21,11 @@ void mainboard_silicon_init_params(FSP_S_CONFIG *params)
 	params->CpuPcieRpSlotImplemented[0] = 1;
 	params->CpuPcieRpPeerToPeerMode[0] = 1;
 	params->CpuPcieRpAcsEnabled[0] = 1;
-	params->CpuPcieRpLtrEnable[0] = 1;
-	params->CpuPcieRpPtmEnabled[0] = 1;
 
 	// PEG1 - PCI-E x16
 	params->CpuPcieRpSlotImplemented[1] = 1;
 	params->CpuPcieRpPeerToPeerMode[1] = 1;
 	params->CpuPcieRpAcsEnabled[1] = 1;
-        params->CpuPcieRpLtrEnable[1] = 1;
-        params->CpuPcieRpPtmEnabled[1] = 1;
 
 	// PCH RootPorts
 	params->PcieRpAcsEnabled[4] = 1;  // M.2 Gen3
@@ -66,11 +62,4 @@ void mainboard_silicon_init_params(FSP_S_CONFIG *params)
 	params->PcieRpEnableCpm[11] = 0;
 	params->PcieRpAspm[11] = 0;
 	params->PcieRpL1Substates[11] = 0;
-
-	// FSP settings
-	params->PchUsbOverCurrentEnable = 0;
-	params->RC1pFreqEnable = 1;
-	params->PavpEnable = 1;
-	params->CdynmaxClampEnable = 0;
-	params->PchEspiHostC10ReportEnable = 1;
 }

@@ -22,8 +22,6 @@ void mainboard_memory_init_params(FSPM_UPD *mupd)
 {
 	// Performance settings
 	mupd->FspmConfig.EnableAbove4GBMmio = 1;
-	mupd->FspmConfig.OcSupport = 1;
-	mupd->FspmConfig.OcLock = 0;
 
 	// iGPU
 	mupd->FspmConfig.GttSize = 3; // 8MB
@@ -37,10 +35,10 @@ void mainboard_memory_init_params(FSPM_UPD *mupd)
 	mupd->FspmConfig.DmiAspmCtrl = 0;
 
 	// Memory settings/training - based on stock
-	mupd->FspmConfig.SpdProfileSelected = 2; // XMP Profile 1
+	mupd->FspmConfig.SpdProfileSelected = 0; // Default profile
 	mupd->FspmConfig.RefClk = 0; // 133MHz
 	mupd->FspmConfig.VddVoltage = 1350; // 1.35V
-	mupd->FspmConfig.McPllVoltageOffset = 6; // Bump memory controller voltage by offset of 6
+	mupd->FspmConfig.McPllVoltageOffset = 6; // Bump MC VCC by offset of 6
 	mupd->FspmConfig.Ratio = 0; // Auto
 	mupd->FspmConfig.RingDownBin = 1;
 	mupd->FspmConfig.GearRatio = 1; // Gear 1
@@ -54,7 +52,6 @@ void mainboard_memory_init_params(FSPM_UPD *mupd)
 	mupd->FspmConfig.EWRTC2D = 1;
 	mupd->FspmConfig.ERDTC2D = 1;
 	mupd->FspmConfig.WRTC2D = 1;
-	mupd->FspmConfig.WRVC1D = 1;
 	mupd->FspmConfig.WRVC1D = 1;
 	mupd->FspmConfig.DIMMODTT = 1;
 	mupd->FspmConfig.DIMMRONT = 1;
@@ -70,14 +67,8 @@ void mainboard_memory_init_params(FSPM_UPD *mupd)
 	mupd->FspmConfig.MrcSafeConfig = 0;
 	mupd->FspmConfig.LpDdrDqDqsReTraining = 1;
 	mupd->FspmConfig.SafeMode = 0;
-	mupd->FspmConfig.OverrideDowngradeForMixedMemory = 0;
 	mupd->FspmConfig.MemTestOnWarmBoot = 1;
-	mupd->FspmConfig.DdrFreqLimit = 3200; // Maximum speed according to Intel's official documentation. 
-	mupd->FspmConfig.SaGv = 0;
-	mupd->FspmConfig.NModeSupport = 1; // Board type is 1N (1DPC).
-	mupd->FspmConfig.RhPrevention = 0;
-	mupd->FspmConfig.RefreshWm = 1;
-	mupd->FspmConfig.ExitOnFailure = 1;
+	mupd->FspmConfig.DdrFreqLimit = 3200; // Maximum tested speed.
 
 	memcfg_init(mupd, &mem_config, &spd_info, half_populated);
 }
